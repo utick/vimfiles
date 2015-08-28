@@ -45,7 +45,7 @@ if WINDOWS()
     set rtp+=$HOME/vimfiles/bundle/Vundle.vim/
     call vundle#begin('$HOME/vimfiles/bundle/')
 else
-    set rtp+=~/.vim/bundle/vundle/
+    set rtp+=~/.vim/bundle/Vundle.vim/
     call vundle#begin()
 endif
 "}}}
@@ -254,21 +254,21 @@ let yankring_min_element_length=4
     let g:NeoComplCache_EnableAtStartup=1   
     let g:NeoComplCache_DisableAutoComplete=1
 "}
-"ĞŞ¸ÄvimrcÖ®ºóÁ¢¼´ÉúĞ§
+"ä¿®æ”¹vimrcä¹‹åç«‹å³ç”Ÿæ•ˆ
 autocmd BufWritePost vimrc so %
 "mapleader
 let mapleader=","
-"¹Ø±Õswapfile"
+"å…³é—­swapfile"
 set noswapfile
 set cpt=.,w,b,u,t,i
 set completeopt=menu,longest
-"acp×Ô¶¯²¹È«
+"acpè‡ªåŠ¨è¡¥å…¨
 ""let g:acp_enableAtStartup = 0
 ""let g:acp_behaviorKeywordCommand = "\<C-n>"
 ""let g:acp_behaviorKeywordLength=3
-"×Ö·û±àÂë
+"å­—ç¬¦ç¼–ç 
 set fileencodings=ucs-bom,utf-8,cp936,gbk
-"ÅĞ¶Ï²Ù×÷ÏµÍ³ÀàĞÍ
+"åˆ¤æ–­æ“ä½œç³»ç»Ÿç±»å‹
 if (has("win32")||has("win64"))
   let $VIMFILES = $HOME.'/vimfiles'
   let $MYVIMRC = $VIMFILES.'/vimrc'
@@ -282,7 +282,7 @@ if (has("win32")||has("win64"))
   catch
     set guifont=Consolas:h11
   endtry
-  "½â¾öconsleÊä³öÂÒÂë   
+  "è§£å†³consleè¾“å‡ºä¹±ç    
   language messages zh_CN.utf-8
   set encoding=utf-8
   set termencoding=gbk
@@ -295,23 +295,23 @@ else
   set guifont=Consolas:h11
   language messages zh_CN.utf-8
 endif   
-"ALTÉÏÏÂ×óÓÒÒÆ¶¯¹â±ê
+"ALTä¸Šä¸‹å·¦å³ç§»åŠ¨å…‰æ ‡
 imap <A-h> <LEFT>
 imap <A-j> <DOWN>
 imap <A-k> <UP>
 imap <A-l> <RIGHT>
-"·Ö¸î´°¿Ú¶¨Î»
+"åˆ†å‰²çª—å£å®šä½
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
-"Éè¶¨windowsÏÂ gvim Æô¶¯Ê±×î´ó»¯
+"è®¾å®šwindowsä¸‹ gvim å¯åŠ¨æ—¶æœ€å¤§åŒ–
 "autocmd GUIEnter * simalt ~x
-"»ù±¾ÅäÖÃ
+"åŸºæœ¬é…ç½®
 set wildmenu
-"ÊäÈëÎÄ×ÖÊÇÒş²ØÊó±ê
+"è¾“å…¥æ–‡å­—æ˜¯éšè—é¼ æ ‡
 set mousehide  
-" Òş²Øµô²Ëµ¥ºÍ¹¤¾ßÌõ¡£
+" éšè—æ‰èœå•å’Œå·¥å…·æ¡ã€‚
 set guioptions-=M
 set guioptions-=T
 set guioptions-=F
@@ -322,52 +322,52 @@ map <silent> <F1> :if &guioptions =~# 'T' <Bar>
      \set guioptions+=T <Bar>
      \set guioptions+=m <Bar>
      \endif<CR>
-" Æô¶¯µÄÊ±ºò²»ÏÔÊ¾ÄÇ¸öÔ®ÖúË÷ÂíÀï¶ùÍ¯µÄÌáÊ¾
+" å¯åŠ¨çš„æ—¶å€™ä¸æ˜¾ç¤ºé‚£ä¸ªæ´åŠ©ç´¢é©¬é‡Œå„¿ç«¥çš„æç¤º
 set shortmess=atI
-" ¼ôÇĞ°å
+" å‰ªåˆ‡æ¿
 set clipboard+=unnamed
 "map <c-v> "+p
-"ÉèÖÃÈ«Ñ¡¿ì½İ¼ü
+"è®¾ç½®å…¨é€‰å¿«æ·é”®
 map <C-a> ggVG
-"¸´ÖÆ
+"å¤åˆ¶
 vmap <C-c> "+y
-"Õ³Ìù
+"ç²˜è´´
 inoremap <C-v> <ESC>"+pa
-"ÉèÖÃ¿ìËÙ²»±£´æÍË³ö¿ì½İ¼ü
+"è®¾ç½®å¿«é€Ÿä¸ä¿å­˜é€€å‡ºå¿«æ·é”®
 map <S-q><S-q> :q!<CR>:q!<CR>:q!<CR>
-"Ìæ»»
+"æ›¿æ¢
 "map <C-H> :L1,L2s/src/tar/g
 "imap <C-H> <Esc><C-H>
-" browsedirÉèÖÃ
+" browsedirè®¾ç½®
 set browsedir=buffer
-" ÔØÈëÎÄ¼şÀàĞÍ²å¼ş
+" è½½å…¥æ–‡ä»¶ç±»å‹æ’ä»¶
 filetype plugin on
-" ×Ô¶¯¸ñÊ½»¯ÉèÖÃ
+" è‡ªåŠ¨æ ¼å¼åŒ–è®¾ç½®
 filetype indent on
 "SuperTab
 let g:SuperTabRetainCompletionType=2
 let g:SuperTabDefaultCompletionType="context"  
 let g:SuperTabContextDefaultCompletionType="<c-n>"
-" ´øÓĞÈçÏÂ·ûºÅµÄµ¥´Ê²»Òª±»»»ĞĞ·Ö¸î
+" å¸¦æœ‰å¦‚ä¸‹ç¬¦å·çš„å•è¯ä¸è¦è¢«æ¢è¡Œåˆ†å‰²
 set iskeyword+=_,$,@,%,#,-
-" µ±buffer±»¶ªÆúÊ±Òş²Ø
+" å½“bufferè¢«ä¸¢å¼ƒæ—¶éšè—
 set bufhidden=hide
-" C++Í·ÎÄ¼şÊ¶±ğ
+" C++å¤´æ–‡ä»¶è¯†åˆ«
 au BufEnter /usr/include/c++/* setf cpp
 au BufEnter /usr/include/g++-3/* setf cpp
-" GNU±ê×¼
+" GNUæ ‡å‡†
 "au BufEnter /usr/* call GnuIndent()
-" ´°¿Ú×î´ó»¯
+" çª—å£æœ€å¤§åŒ–
 "autocmd GUIEnter * simalt ~x
-" ¿ÉÒÔÔÚbufferµÄÈÎºÎµØ·½Ê¹ÓÃÊó±ê£¨ÀàËÆofficeÖĞÔÚ¹¤×÷ÇøË«»÷Êó±ê¶¨Î»£©
+" å¯ä»¥åœ¨bufferçš„ä»»ä½•åœ°æ–¹ä½¿ç”¨é¼ æ ‡ï¼ˆç±»ä¼¼officeä¸­åœ¨å·¥ä½œåŒºåŒå‡»é¼ æ ‡å®šä½ï¼‰
 set mouse=a
 set selection=exclusive
 set selectmode=mouse,key
-" ÔÊĞíbackspaceºÍ¹â±ê¼ü¿çÔ½ĞĞ±ß½ç
+" å…è®¸backspaceå’Œå…‰æ ‡é”®è·¨è¶Šè¡Œè¾¹ç•Œ
 set whichwrap+=<,>,h,l
-" Ê¹»Ø¸ñ¼ü£¨backspace£©Õı³£´¦Àíindent, eol, startµÈ
+" ä½¿å›æ ¼é”®ï¼ˆbackspaceï¼‰æ­£å¸¸å¤„ç†indent, eol, startç­‰
 set backspace=eol,start,indent
-" ×Ô¶¯²¹È«À¨ºÅ£¬°üÀ¨´óÀ¨ºÅ
+" è‡ªåŠ¨è¡¥å…¨æ‹¬å·ï¼ŒåŒ…æ‹¬å¤§æ‹¬å·
 :inoremap ( ()<ESC>i
 :inoremap ) <c-r>=ClosePair(')')<CR>
 :inoremap { {}<ESC>i<CR><CR><UP><TAB>
@@ -377,7 +377,7 @@ set backspace=eol,start,indent
 :inoremap < <><ESC>i
 :inoremap > <c-r>=ClosePair('>')<CR>
 :inoremap " ""<ESC>i
-" ´ò¿ªÎÄ¼şÊ±£¬×ÜÊÇÌøµ½ÍË³öÖ®Ç°µÄ¹â±ê´¦
+" æ‰“å¼€æ–‡ä»¶æ—¶ï¼Œæ€»æ˜¯è·³åˆ°é€€å‡ºä¹‹å‰çš„å…‰æ ‡å¤„
  autocmd BufReadPost *
 			 \if line("'\"") > 0 && line("'\"") <= line("$") |
 			 \  exe "normal! g`\"" |
@@ -385,22 +385,22 @@ set backspace=eol,start,indent
 if has("gui_running")
     set showtabline=1
     nmap tn :tabnew<CR>
-" ÓÃÇ³É«¸ßÁÁµ±Ç°±à¼­ĞĞ
+" ç”¨æµ…è‰²é«˜äº®å½“å‰ç¼–è¾‘è¡Œ
    autocmd InsertLeave * se nocul
    autocmd InsertEnter * se cul
-"½â¾ö²Ëµ¥ÂÒÂë   
+"è§£å†³èœå•ä¹±ç    
     source $VIMRUNTIME/delmenu.vim   
     source $VIMRUNTIME/menu.vim   
 endif
-" ±êÇ©Ò³Ö»ÏÔÊ¾ÎÄ¼şÃû
+" æ ‡ç­¾é¡µåªæ˜¾ç¤ºæ–‡ä»¶å
 function! ShortTabLabel ()
     let bufnrlist = tabpagebuflist (v:lnum)
    let label = bufname (bufnrlist[tabpagewinnr (v:lnum) -1])
      let filename = fnamemodify (label, ':t')
     return filename
 endfunction
-"ÉèÖÃ= + - * Ç°ºó×Ô¶¯¿Õ¸ñ
-"ÉèÖÃ,ºóÃæ×Ô¶¯Ìí¼Ó¿Õ¸ñ
+"è®¾ç½®= + - * å‰åè‡ªåŠ¨ç©ºæ ¼
+"è®¾ç½®,åé¢è‡ªåŠ¨æ·»åŠ ç©ºæ ¼
 au FileType python inoremap <buffer>= <c-r>=EqualSign('=')<CR>
 au FileType python inoremap <buffer>+ <c-r>=EqualSign('+')<CR>
 au FileType python inoremap <buffer>- <c-r>=EqualSign('-')<CR>
@@ -417,7 +417,7 @@ else
 return "\<SPACE>".a:char."\<SPACE>\<ESC>a"
 endif
 endfunc
-"ÊµÏÖÀ¨ºÅµÄ×Ô¶¯Åä¶Ôºó·ÀÖ¹ÖØ¸´ÊäÈë£©£¬ÊÊÓÃpython
+"å®ç°æ‹¬å·çš„è‡ªåŠ¨é…å¯¹åé˜²æ­¢é‡å¤è¾“å…¥ï¼‰ï¼Œé€‚ç”¨python
  function! ClosePair(char)
     if getline('.')[col('.') - 1] == a:char
         return "\<Right>"
@@ -425,84 +425,84 @@ endfunc
       return a:char
    endif
 endf
-"ÔöÇ¿Ä£Ê½ÖĞµÄÃüÁîĞĞ×Ô¶¯Íê³É²Ù×÷
+"å¢å¼ºæ¨¡å¼ä¸­çš„å‘½ä»¤è¡Œè‡ªåŠ¨å®Œæˆæ“ä½œ
 set foldmethod=manual
-"Éè¶¨ÕÛµş·½Ê½ÎªÊÖ¶¯
+"è®¾å®šæŠ˜å æ–¹å¼ä¸ºæ‰‹åŠ¨
 set helplang=cn
-"ÉèÖÃ°ïÖúµÄÓïÑÔÎªÖĞÎÄ
+"è®¾ç½®å¸®åŠ©çš„è¯­è¨€ä¸ºä¸­æ–‡
 set cin   
-"ÊµÏÖC³ÌĞòµÄËõ½ø
+"å®ç°Cç¨‹åºçš„ç¼©è¿›
 set sw=4  
-"Éè¼Æ(×Ô¶¯) Ëõ½øÊ¹ÓÃ4¸ö¿Õ¸ñ
+"è®¾è®¡(è‡ªåŠ¨) ç¼©è¿›ä½¿ç”¨4ä¸ªç©ºæ ¼
 set sta   
-"²åÈë<tab>Ê±Ê¹ÓÃ'shiftwidth'
+"æ’å…¥<tab>æ—¶ä½¿ç”¨'shiftwidth'
 set backspace=2
-"Ö¸Ã÷ÔÚ²åÈëÄ£Ê½ÏÂ¿ÉÒÔÊ¹ÓÃ<BS>É¾³ı¹â±êÇ°ÃæµÄ×Ö·û
+"æŒ‡æ˜åœ¨æ’å…¥æ¨¡å¼ä¸‹å¯ä»¥ä½¿ç”¨<BS>åˆ é™¤å…‰æ ‡å‰é¢çš„å­—ç¬¦
 set number
-"ÏÔÊ¾ĞĞºÅ
+"æ˜¾ç¤ºè¡Œå·
 filetype on
-"¼ì²âÎÄ¼şµÄÀàĞÍ
+"æ£€æµ‹æ–‡ä»¶çš„ç±»å‹
 set history=1000
-""¼ÇÂ¼ÀúÊ·µÄĞĞÊı
-" ÔÚËÑË÷µÄÊ±ºòºöÂÔ´óĞ¡Ğ´
+""è®°å½•å†å²çš„è¡Œæ•°
+" åœ¨æœç´¢çš„æ—¶å€™å¿½ç•¥å¤§å°å†™
 set ignorecase
-"±³¾°Ê¹ÓÃºÚÉ«
+"èƒŒæ™¯ä½¿ç”¨é»‘è‰²
 syntax on
-"Óï·¨¸ßÁÁ¶ÈÏÔÊ¾
+"è¯­æ³•é«˜äº®åº¦æ˜¾ç¤º
 set autoindent
 set smartindent
-"ÉÏÃæÁ½ĞĞÔÚ½øĞĞ±àĞ´´úÂëÊ±£¬ÔÚ¸ñÊ½¶ÔÆğÉÏºÜÓĞÓÃ£»
-"µÚÒ»ĞĞ£¬vimÊ¹ÓÃ×Ô¶¯¶ÔÆë£¬Ò²¾ÍÊÇ°Ñµ±Ç°ĞĞµÄ¶ÔÆğ¸ñÊ½Ó¦ÓÃµ½ÏÂÒ»ĞĞ£»
-"µÚ¶şĞĞ£¬ÒÀ¾İÉÏÃæµÄ¶ÔÆğ¸ñÊ½£¬ÖÇÄÜµÄÑ¡Ôñ¶ÔÆğ·½Ê½£¬¶ÔÓÚÀàËÆCÓïÑÔ±àĞ´ÉÏºÜÓĞÓÃ
-" ÔÚ±»·Ö¸îµÄ´°¿Ú¼äÏÔÊ¾¿Õ°×£¬±ãÓÚÔÄ¶Á
+"ä¸Šé¢ä¸¤è¡Œåœ¨è¿›è¡Œç¼–å†™ä»£ç æ—¶ï¼Œåœ¨æ ¼å¼å¯¹èµ·ä¸Šå¾ˆæœ‰ç”¨ï¼›
+"ç¬¬ä¸€è¡Œï¼Œvimä½¿ç”¨è‡ªåŠ¨å¯¹é½ï¼Œä¹Ÿå°±æ˜¯æŠŠå½“å‰è¡Œçš„å¯¹èµ·æ ¼å¼åº”ç”¨åˆ°ä¸‹ä¸€è¡Œï¼›
+"ç¬¬äºŒè¡Œï¼Œä¾æ®ä¸Šé¢çš„å¯¹èµ·æ ¼å¼ï¼Œæ™ºèƒ½çš„é€‰æ‹©å¯¹èµ·æ–¹å¼ï¼Œå¯¹äºç±»ä¼¼Cè¯­è¨€ç¼–å†™ä¸Šå¾ˆæœ‰ç”¨
+" åœ¨è¢«åˆ†å‰²çš„çª—å£é—´æ˜¾ç¤ºç©ºç™½ï¼Œä¾¿äºé˜…è¯»
 set fillchars=vert:\ ,stl:\ ,stlnc:\
-"µÚÒ»ĞĞÉèÖÃtab¼üÎª4¸ö¿Õ¸ñ£¬µÚ¶şĞĞÉèÖÃµ±ĞĞÖ®¼ä½»´íÊ±Ê¹ÓÃ4¸ö¿Õ¸ñ
+"ç¬¬ä¸€è¡Œè®¾ç½®tabé”®ä¸º4ä¸ªç©ºæ ¼ï¼Œç¬¬äºŒè¡Œè®¾ç½®å½“è¡Œä¹‹é—´äº¤é”™æ—¶ä½¿ç”¨4ä¸ªç©ºæ ¼
 set expandtab
 set tabstop=4
 set smarttab
 set shiftwidth=4
 set showmatch
-" ¸ßÁÁ×Ö·û£¬ÈÃÆä²»ÊÜ100ÁĞÏŞÖÆ
+" é«˜äº®å­—ç¬¦ï¼Œè®©å…¶ä¸å—100åˆ—é™åˆ¶
 ":highlight OverLength ctermbg=red ctermfg=white guibg=red guifg=white
 ":match OverLength '\%101v.*'
-" ×ÜÊÇÏÔÊ¾×´Ì¬ĞĞ
+" æ€»æ˜¯æ˜¾ç¤ºçŠ¶æ€è¡Œ
 set laststatus=2
 highlight StatusLine guifg=SlateBlue guibg=Yellow
 "highlight StatusLine guifg=Black guibg=White
 "highlight StatusLineNC guifg=Gray guibg=White
-" ÎÒµÄ×´Ì¬ĞĞÏÔÊ¾µÄÄÚÈİ£¨°üÀ¨ÎÄ¼şÀàĞÍºÍ½âÂë£©
+" æˆ‘çš„çŠ¶æ€è¡Œæ˜¾ç¤ºçš„å†…å®¹ï¼ˆåŒ…æ‹¬æ–‡ä»¶ç±»å‹å’Œè§£ç ï¼‰
 "set statusline=[%n]%<%f%y%h%m%r%=[%b\ 0x%B]\ Line\:%l\/%L\ Col\:%c%V\ %P
-" Æ¥ÅäÀ¨ºÅ¸ßÁÁµÄÊ±¼ä£¨µ¥Î»ÊÇÊ®·ÖÖ®Ò»Ãë£©
+" åŒ¹é…æ‹¬å·é«˜äº®çš„æ—¶é—´ï¼ˆå•ä½æ˜¯ååˆ†ä¹‹ä¸€ç§’ï¼‰
 set matchtime=3
-" ÉèÖÃÃüÁîĞĞ¸ß¶ÈÎª2ĞĞ
+" è®¾ç½®å‘½ä»¤è¡Œé«˜åº¦ä¸º2è¡Œ
 set cmdheight=1
-"ÔÚ±à¼­¹ı³ÌÖĞ£¬ÔÚÓÒÏÂ½ÇÏÔÊ¾¹â±êÎ»ÖÃµÄ×´Ì¬ĞĞ
+"åœ¨ç¼–è¾‘è¿‡ç¨‹ä¸­ï¼Œåœ¨å³ä¸‹è§’æ˜¾ç¤ºå…‰æ ‡ä½ç½®çš„çŠ¶æ€è¡Œ
 set incsearch
 set hlsearch
-"²éÑ¯Ê±·Ç³£·½±ã£¬ÈçÒª²éÕÒbookµ¥´Ê£¬µ±ÊäÈëµ½/bÊ±£¬»á×Ô¶¯ÕÒµ½µÚÒ»
-"¸öb¿ªÍ·µÄµ¥´Ê£¬µ±ÊäÈëµ½/boÊ±£¬»á×Ô¶¯ÕÒµ½µÚÒ»¸öbo¿ªÍ·µÄµ¥´Ê£¬ÒÀ
-"´ÎÀàÍÆ£¬½øĞĞ²éÕÒÊ±£¬Ê¹ÓÃ´ËÉèÖÃ»á¿ìËÙÕÒµ½´ğ°¸£¬µ±ÄãÕÒÒªÆ¥ÅäµÄµ¥´Ê
-"Ê±£¬±ğÍü¼Ç»Ø³µ¡£
-" ÔöÇ¿¼ìË÷¹¦ÄÜ
-"½«µ±Ç°µÄ¹¤³ÌµÄtagsµ¼Èë
+"æŸ¥è¯¢æ—¶éå¸¸æ–¹ä¾¿ï¼Œå¦‚è¦æŸ¥æ‰¾bookå•è¯ï¼Œå½“è¾“å…¥åˆ°/bæ—¶ï¼Œä¼šè‡ªåŠ¨æ‰¾åˆ°ç¬¬ä¸€
+"ä¸ªbå¼€å¤´çš„å•è¯ï¼Œå½“è¾“å…¥åˆ°/boæ—¶ï¼Œä¼šè‡ªåŠ¨æ‰¾åˆ°ç¬¬ä¸€ä¸ªboå¼€å¤´çš„å•è¯ï¼Œä¾
+"æ¬¡ç±»æ¨ï¼Œè¿›è¡ŒæŸ¥æ‰¾æ—¶ï¼Œä½¿ç”¨æ­¤è®¾ç½®ä¼šå¿«é€Ÿæ‰¾åˆ°ç­”æ¡ˆï¼Œå½“ä½ æ‰¾è¦åŒ¹é…çš„å•è¯
+"æ—¶ï¼Œåˆ«å¿˜è®°å›è½¦ã€‚
+" å¢å¼ºæ£€ç´¢åŠŸèƒ½
+"å°†å½“å‰çš„å·¥ç¨‹çš„tagså¯¼å…¥
 set tags=./tags,./../tags,./**/tags
-"Alt×éºÏ¼ü²»Ó³Éäµ½²Ëµ¥ÉÏ
+"Altç»„åˆé”®ä¸æ˜ å°„åˆ°èœå•ä¸Š
 set winaltkeys=no
  
-"½ûÖ¹×Ô¶¯¸Ä±äµ±Ç°Vim´°¿ÚµÄ´óĞ¡
+"ç¦æ­¢è‡ªåŠ¨æ”¹å˜å½“å‰Vimçª—å£çš„å¤§å°
 let Tlist_Inc_Winwidth=0
-"°Ñ·½·¨ÁĞ±í·ÅÔÚÆÁÄ»µÄÓÒ²à
+"æŠŠæ–¹æ³•åˆ—è¡¨æ”¾åœ¨å±å¹•çš„å³ä¾§
 let Tlist_Use_Right_Window=1
-"ÈÃµ±Ç°²»±»±à¼­µÄÎÄ¼şµÄ·½·¨ÁĞ±í×Ô¶¯ÕÛµşÆğÀ´£¬ ÕâÑù¿ÉÒÔ½ÚÔ¼Ò»Ğ©ÆÁÄ»¿Õ¼ä
+"è®©å½“å‰ä¸è¢«ç¼–è¾‘çš„æ–‡ä»¶çš„æ–¹æ³•åˆ—è¡¨è‡ªåŠ¨æŠ˜å èµ·æ¥ï¼Œ è¿™æ ·å¯ä»¥èŠ‚çº¦ä¸€äº›å±å¹•ç©ºé—´
 let Tlist_File_Fold_Auto_Close=1
 let Tlist_Show_One_File=1
 let Tlist_Exit_OnlyWindow=1
-"Ó³ÉäF4Îª¹¦ÄÜ¼üµ÷³ötagesä¯ÀÀÆ÷
-"Ó³ÉäF3Îª¹¦ÄÜ¼üµ÷³öwinmanagerµÄÎÄ¼şä¯ÀÀÆ÷
-let g:winManagerWindowLayout='FileExplorer|TagList' "ÄãÒªÊÇÏ²»¶ÕâÖÖ²¼¾Ö¿ÉÒÔ×¢ÊÍµôÕâÒ»ĞĞ
+"æ˜ å°„F4ä¸ºåŠŸèƒ½é”®è°ƒå‡ºtagesæµè§ˆå™¨
+"æ˜ å°„F3ä¸ºåŠŸèƒ½é”®è°ƒå‡ºwinmanagerçš„æ–‡ä»¶æµè§ˆå™¨
+let g:winManagerWindowLayout='FileExplorer|TagList' "ä½ è¦æ˜¯å–œæ¬¢è¿™ç§å¸ƒå±€å¯ä»¥æ³¨é‡Šæ‰è¿™ä¸€è¡Œ
 map <F4> :TlistToggle<cr>
 map <F3> :NERDTreeToggle<cr>
-map <F10> :call Do_CsTag()<CR>" °´F10½¨Á¢tagsË÷Òı
+map <F10> :call Do_CsTag()<CR>" æŒ‰F10å»ºç«‹tagsç´¢å¼•
 nmap <C-@>s :cs find s <C-R>=expand("<cword>")<CR><CR>:copen<CR>
 nmap <C-@>g :cs find g <C-R>=expand("<cword>")<CR><CR>:copen<CR>
 nmap <C-@>c :cs find c <C-R>=expand("<cword>")<CR><CR>:copen<CR>
@@ -566,12 +566,12 @@ function! Do_CsTag()
         endif
     endif
 endfunction
-"¶¨ÒåÔ´´úÂë¸ñÊ½»¯
+"å®šä¹‰æºä»£ç æ ¼å¼åŒ–
 map <F11> :call FormartSrc()<CR><CR>
-"¶¨ÒåFormartSrc()
+"å®šä¹‰FormartSrc()
 function! FormartSrc()
 exec "w"
-"C³ÌĞò,Perl³ÌĞò,Python³ÌĞò
+"Cç¨‹åº,Perlç¨‹åº,Pythonç¨‹åº
 if &filetype == 'c'
 exec "!astyle --style=gnu --suffix=none %"
 exec "e! %"
@@ -584,7 +584,7 @@ exec "e! %"
 elseif &filetype == 'py'
 exec "!astyle --style=gnu --suffix=none %"
 exec "e! %"
-"Java³ÌĞò
+"Javaç¨‹åº
 elseif &filetype == 'java'
 exec "!astyle --style=java --suffix=none %"
 exec "e! %"
@@ -602,18 +602,18 @@ exec "!astyle --style=gnu --suffix=none %"
 exec "e! %"
 endif
 endfunction
-"½áÊø¶¨ÒåFormartSrc
+"ç»“æŸå®šä¹‰FormartSrc
  
-"ÉèÖÃtabµÄ¿ì½İ¼ü
-"Shift+tÎªĞÂ½¨Ò»¸ö±êÇ©£¬°´Á½´ÎShirt+tÎªÌø×ª±êÇ©
+"è®¾ç½®tabçš„å¿«æ·é”®
+"Shift+tä¸ºæ–°å»ºä¸€ä¸ªæ ‡ç­¾ï¼ŒæŒ‰ä¸¤æ¬¡Shirt+tä¸ºè·³è½¬æ ‡ç­¾
 map <S-t> :tabnew .<CR>
 map <S-t><S-t> <ESC>:tabnext<CR>
  
-"ÉèÖÃ½¨Á¢ĞÂĞĞµ«ÊÇ²»²åÈë
+"è®¾ç½®å»ºç«‹æ–°è¡Œä½†æ˜¯ä¸æ’å…¥
 "map <S-o> o<ESC><CR>
-"ÉèÖÃ¿ìËÙ×¢ÊÍ¼ü
-"ÏêÏ¸×¢ÊÍ
-"F12ÊÇÔÚ¸ÃĞĞºó±ßÌí¼Ó×¢ÊÍ£¬Shift+F12Îª×¢ÊÍµô¸ÃĞĞ£¬Á½´ÎShift+F12ÊÇÈ¥µô¸ÄĞĞµÄ×¢ÊÍ,È»ºó½«¹â±êÖÃÓÚÏÂÒ»ĞĞ
+"è®¾ç½®å¿«é€Ÿæ³¨é‡Šé”®
+"è¯¦ç»†æ³¨é‡Š
+"F12æ˜¯åœ¨è¯¥è¡Œåè¾¹æ·»åŠ æ³¨é‡Šï¼ŒShift+F12ä¸ºæ³¨é‡Šæ‰è¯¥è¡Œï¼Œä¸¤æ¬¡Shift+F12æ˜¯å»æ‰æ”¹è¡Œçš„æ³¨é‡Š,ç„¶åå°†å…‰æ ‡ç½®äºä¸‹ä¸€è¡Œ
 nnoremap <silent> <S-F9> :A<CR>
 map <S-F12> <ESC>I//<ESC><CR>
 map! <S-F12> <ESC>I//<ESC><CR>
@@ -622,11 +622,11 @@ map! <S-F12><S-F12> <ESC>02x<ESC><CR>
 map <F12> <ESC>$a//
 map! <F12> <ESC>$a//
 
-"ÉèÖÃ±àÒë¿ì½İ¼ü
-"F5Îªmake£¬Á½´ÎF5Îªmake clean
-"F6Îªquickfix£¬²é¿´ÏêÏ¸ĞÅÏ¢, Á½´ÎF6¹Ø±ÕÏêÏ¸ĞÅÏ¢
-"F7ÎªÏÂÒ»¸ö½á¹û£¬Á½´ÎF7ÎªÉÏÒ»¸ö½á¹û
-"F8Îª±àÒëºÍÔËĞĞµ¥¸ö³ÌĞò¡¢Á½´ÎF8Îªµ÷ÊÔ
+"è®¾ç½®ç¼–è¯‘å¿«æ·é”®
+"F5ä¸ºmakeï¼Œä¸¤æ¬¡F5ä¸ºmake clean
+"F6ä¸ºquickfixï¼ŒæŸ¥çœ‹è¯¦ç»†ä¿¡æ¯, ä¸¤æ¬¡F6å…³é—­è¯¦ç»†ä¿¡æ¯
+"F7ä¸ºä¸‹ä¸€ä¸ªç»“æœï¼Œä¸¤æ¬¡F7ä¸ºä¸Šä¸€ä¸ªç»“æœ
+"F8ä¸ºç¼–è¯‘å’Œè¿è¡Œå•ä¸ªç¨‹åºã€ä¸¤æ¬¡F8ä¸ºè°ƒè¯•
 ""map <F5> :Do_make<CR>
 ""map <F5><F5> :make clean<CR>
 map <F6> :cw<CR>
@@ -636,31 +636,31 @@ map <F7><F7> :cp<CR>
 map <F8> :call Compile()<CR>:call Run()<CR>
 map <F8><F8> :call Run()<CR>
 map <leader>cd :cd %:p:h<cr>
-""autocmd FileType cpp map <F8> <Esc>:w!<CR>:!compile_cpp.bat %<CR>//Õâ¸öµØ·´ÊÇÖµµÃ×¢ÒâµÄ Òª¸ù¾İ×Ô¼ºµÄ»úÆ÷Çé¿ö¸ü¸Ä
-"¶¨ÒåCompileº¯Êı£¬ÓÃÀ´¶Ô²»ÓÃÍâ½Ó¿âµÄĞ¡³ÌĞò½øĞĞ±àÒëºÍÔËĞĞ,×Ô¼º¿ÉÒÔ¸ù¾İÎÄ¼şÃûÀ©Õ¹»òÊµ¼ÊÇé¿öĞŞ¸Ä²ÎÊı
+""autocmd FileType cpp map <F8> <Esc>:w!<CR>:!compile_cpp.bat %<CR>//è¿™ä¸ªåœ°åæ˜¯å€¼å¾—æ³¨æ„çš„ è¦æ ¹æ®è‡ªå·±çš„æœºå™¨æƒ…å†µæ›´æ”¹
+"å®šä¹‰Compileå‡½æ•°ï¼Œç”¨æ¥å¯¹ä¸ç”¨å¤–æ¥åº“çš„å°ç¨‹åºè¿›è¡Œç¼–è¯‘å’Œè¿è¡Œ,è‡ªå·±å¯ä»¥æ ¹æ®æ–‡ä»¶åæ‰©å±•æˆ–å®é™…æƒ…å†µä¿®æ”¹å‚æ•°
 set autochdir
-"±àÒë
+"ç¼–è¯‘
 function! Compile()
 exec "w"
-"C³ÌĞò   
+"Cç¨‹åº   
 if &filetype == "c"
 exec "!gcc -Wl,-enable-auto-import % -g -o %<.exe"
-"c++³ÌĞò
+"c++ç¨‹åº
 elseif &filetype == "cpp"
 exec "!g++ -Wl,-enable-auto-import % -g -o %<.exe"
-"java³ÌĞò
+"javaç¨‹åº
 elseif &filetype == 'java'
 exec "!javac %"
-"python³ÌĞò
+"pythonç¨‹åº
 elseif &filetype =='python'
 exec "!python %"
 endif
 endfunction
 
-"¶¨ÒåRunº¯Êı
+"å®šä¹‰Runå‡½æ•°
 function! Run()
 exec "w"
-"C³ÌĞò
+"Cç¨‹åº
 if &filetype == 'c'
 exec "!%<.exe"
 endif
@@ -674,12 +674,12 @@ if &filetype =='python'
 exec "!python %"
 endif
 endfunction
-"½áÊø¶¨ÒåRun
+"ç»“æŸå®šä¹‰Run
 
-"¶¨ÒåDebugº¯Êı£¬ÓÃÀ´µ÷ÊÔĞ¡³ÌĞò
+"å®šä¹‰Debugå‡½æ•°ï¼Œç”¨æ¥è°ƒè¯•å°ç¨‹åº
 function! Debug()
 exec "w"
-"C³ÌĞò
+"Cç¨‹åº
 if &filetype == 'c'
 exec "!rm %<"
 exec "!gcc % -g -o %<"
@@ -688,18 +688,18 @@ elseif &filetype == 'cpp'
 exec "!rm %<"
 exec "!g++ % -g -o %<"
 exec "!gdb %<"
-"Java³ÌĞò
+"Javaç¨‹åº
 exec "!rm %<.class"
 elseif &filetype == 'java'
 exec "!javac %"
 exec "!jdb %<"
 endif
 endfunction
-"¶¨Òådubug½áÊø
+"å®šä¹‰dubugç»“æŸ
  
 "autocmd BufNewFile *.cc,*.sh,*.java exec ":call SetTitle()"
-"ĞÂ½¨.cc,.java,.sh,
-"×Ô¶¯½«shell½Å±¾ÉèÖÃÎª¿ÉÖ´ĞĞÈ¨ÏŞ
+"æ–°å»º.cc,.java,.sh,
+"è‡ªåŠ¨å°†shellè„šæœ¬è®¾ç½®ä¸ºå¯æ‰§è¡Œæƒé™
 au BufWritePost * if getline(1) =~ "^#!" | if getline(1) =~ "/bin/" | silent !chmod a+x <afile> | endif | endif
 if has("autocmd")
 autocmd BufRead *.txt set tw=78
@@ -708,15 +708,15 @@ autocmd BufReadPost *
 \   exe "normal g'\"" |
 \ endif
 endif
-" Ê¹ÓÃÉÏÏÂÀ´µ÷½Ú´°¿Ú´óĞ¡
+" ä½¿ç”¨ä¸Šä¸‹æ¥è°ƒèŠ‚çª—å£å¤§å°
 nmap <silent> <UP> <C-W>+:let t:flwwinlayout = winrestcmd()<CR>
 nmap <silent> <DOWN> <C-W>-:let t:flwwinlayout = winrestcmd()<CR>
-" ÃüÁîÄ£Ê½ÏÂ·½±ãÒÆ¶¯¹â±ê
+" å‘½ä»¤æ¨¡å¼ä¸‹æ–¹ä¾¿ç§»åŠ¨å…‰æ ‡
 if (!has ("gui_win32"))
   cmap <C-A> <Home>
   cmap <C-E> <End>
 endif
-" ´ò¿ªÒ»¸öÁÙÊ±µÄ»º³åÇøËæ±ã¼Ç¶«Î÷
+" æ‰“å¼€ä¸€ä¸ªä¸´æ—¶çš„ç¼“å†²åŒºéšä¾¿è®°ä¸œè¥¿
 "nmap <Leader>s :Scratch<cr>
 "javacomplete
 ""autocmd Filetype java setlocal omnifunc=javacomplete#Complete
