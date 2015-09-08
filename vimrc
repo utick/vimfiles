@@ -110,7 +110,6 @@ set so=10
 set ruler
 set number
 set hidden
-set nowrap
 set autoread
 set wildignore=*.o,*~,*.pyc
 set ffs=unix,dos,mac
