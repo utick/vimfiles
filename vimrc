@@ -1,3 +1,8 @@
+let @b="0fBi:fTld$a,j0fD"
+let @d="0fDi:fEld$a,j0fD"
+
+noremap <A-b> @b
+noremap <A-d> @d
 " Environment {
 
     " Identify platform {
@@ -106,7 +111,6 @@ filetype plugin indent on     " required!
 
 syntax on
 syntax enable
-set so=10
 set ruler
 set number
 set hidden
@@ -259,7 +263,7 @@ autocmd BufWritePost vimrc so %
 let mapleader=","
 "¹Ø±Õswapfile"
 set noswapfile
-set cpt=.,w,b,u,t,i
+set cpt=.,w,b,u
 set completeopt=menu,longest
 "acp×Ô¶¯²¹È«
 ""let g:acp_enableAtStartup = 0
