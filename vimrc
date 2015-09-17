@@ -1,8 +1,3 @@
-let @b="0fBi:fTld$a,j0fD"
-let @d="0fDi:fEld$a,j0fD"
-
-noremap <A-b> @b
-noremap <A-d> @d
 " Environment {
 
     " Identify platform {
@@ -71,7 +66,7 @@ Plugin 'surround.vim'
 "Plugin 'The-NERD-Commenter'
 Plugin 'The-NERD-tree'
 " Both ctrlp and yankring use ctrl-p, the second one will work
-Plugin 'kien/ctrlp.vim'
+"Plugin 'kien/ctrlp.vim'
 "Plugin 'majutsushi/tagbar'
 Plugin 'bling/vim-airline'
 
@@ -252,7 +247,8 @@ set background=dark
 "let g:airline_right_sep='<'
 " YankRing
 map <leader>p :YRShow<CR>
-let yankring_min_element_length=4
+let g:yankring_enabled=1
+let g:yankring_min_element_length=4
 " NeoComplCache{
     let g:NeoComplCache_EnableAtStartup=1   
     let g:NeoComplCache_DisableAutoComplete=1
@@ -637,6 +633,7 @@ map <F6><F6> :ccl<CR>
 map <F7> :cn<CR>
 map <F7><F7> :cp<CR>
 map <F8> :call Compile()<CR>:call Run()<CR>
+noremap <A-r> :call Compile()<CR>:call Run()<CR>
 map <F8><F8> :call Run()<CR>
 map <leader>cd :cd %:p:h<cr>
 ""autocmd FileType cpp map <F8> <Esc>:w!<CR>:!compile_cpp.bat %<CR>//Õâ¸öµØ·´ÊÇÖµµÃ×¢ÒâµÄ Òª¸ù¾Ý×Ô¼ºµÄ»úÆ÷Çé¿ö¸ü¸Ä
@@ -656,7 +653,7 @@ elseif &filetype == 'java'
 exec "!javac %"
 "python³ÌÐò
 elseif &filetype =='python'
-exec "!python %"
+"exec "!python %"
 endif
 endfunction
 
@@ -675,6 +672,9 @@ exec "!java %<"
 endif
 if &filetype =='python'
 exec "!python %"
+endif
+if &filetype =='sh'
+exec "!bash %"
 endif
 endfunction
 "½áÊø¶¨ÒåRun
@@ -729,3 +729,7 @@ endif
 "autocmd Filetype java,javascript,jsp,cpp,c inoremap <buffer>  .  .<C-X><C-O><C-P>
 "vim-markdown
 let g:vim_markdown_folding_disabled=1
+"Exchange CapsLock&Ctrl"
+""Windows Registry Editor Version 5.00
+""[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Keyboard Layout]
+"""Scancode Map"=hex:00,00,00,00,00,00,00,00,02,00,00,00,1d,00,3a,00,00,00,00,00
