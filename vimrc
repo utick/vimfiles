@@ -1,39 +1,34 @@
 " Environment {
-
-    " Identify platform {
-        silent function! OSX()
-            return has('macunix')
+" Identify platform {
+silent function! OSX()
+return has('macunix')
         endfunction
         silent function! LINUX()
-            return has('unix') && !has('macunix') && !has('win32unix')
-        endfunction
-        silent function! WINDOWS()
-            return  (has('win16') || has('win32') || has('win64'))
-        endfunction
-    " }
-
-    " Basics {
-        set nocompatible        " Must be first line
-        if !WINDOWS()
-            set shell=/bin/sh
-        endif
-    " }
-
-    " Windows Compatible {
-        " On Windows, also use '.vim' instead of 'vimfiles'; this makes synchronization
-        " across (heterogeneous) systems easier.
-        if WINDOWS()
-          set runtimepath=$HOME/vimfiles,$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
-        endif
-    " }
-    
-    " Arrow Key Fix {
-        " https://github.com/spf13/spf13-vim/issues/780
-        if &term[:4] == "xterm" || &term[:5] == 'screen' || &term[:3] == 'rxvt'
-            inoremap <silent> <C-[>OC <RIGHT>
-        endif
-    " }
-
+        return has('unix') && !has('macunix') && !has('win32unix')
+    endfunction
+    silent function! WINDOWS()
+    return  (has('win16') || has('win32') || has('win64'))
+endfunction
+" }
+" Basics {
+set nocompatible        " Must be first line
+if !WINDOWS()
+    set shell=/bin/sh
+endif
+" }
+" Windows Compatible {
+" On Windows, also use '.vim' instead of 'vimfiles'; this makes synchronization
+" across (heterogeneous) systems easier.
+if WINDOWS()
+    set runtimepath=$HOME/vimfiles,$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
+endif
+" }
+" Arrow Key Fix {
+" https://github.com/spf13/spf13-vim/issues/780
+if &term[:4] == "xterm" || &term[:5] == 'screen' || &term[:3] == 'rxvt'
+    inoremap <silent> <C-[>OC <RIGHT>
+endif
+" }
 " }
 
 " use vim by default
@@ -162,83 +157,83 @@ set background=dark
 
 " plugin settings
 " NerdTree {
-        if isdirectory(expand("$HOME/vimfiles/bundle/The-NERD-tree/"))
-            map <C-e> :NERDTreeToggle<CR>
-            map <leader>nf :NERDTreeFind<CR>
-            nmap <leader>nt :NERDTreeFind<CR>
+if isdirectory(expand("$HOME/vimfiles/bundle/The-NERD-tree/"))
+    map <C-e> :NERDTreeToggle<CR>
+    map <leader>nf :NERDTreeFind<CR>
+    nmap <leader>nt :NERDTreeFind<CR>
 
-            let NERDTreeShowBookmarks=1
-            let NERDTreeIgnore=['\.py[cd]$', '\~$', '\.swo$', '\.swp$', '^\.git$', '^\.hg$', '^\.svn$', '\.bzr$']
-            let NERDTreeChDirMode=0
-            let NERDTreeQuitOnOpen=1
-            let NERDTreeMouseMode=2
-            let NERDTreeShowHidden=1
-            let NERDTreeKeepTreeInNewTab=1
-            let g:nerdtree_tabs_open_on_gui_startup=0
-        endif
-    " }
+    let NERDTreeShowBookmarks=1
+    let NERDTreeIgnore=['\.py[cd]$', '\~$', '\.swo$', '\.swp$', '^\.git$', '^\.hg$', '^\.svn$', '\.bzr$']
+    let NERDTreeChDirMode=0
+    let NERDTreeQuitOnOpen=1
+    let NERDTreeMouseMode=2
+    let NERDTreeShowHidden=1
+    let NERDTreeKeepTreeInNewTab=1
+    let g:nerdtree_tabs_open_on_gui_startup=0
+endif
+" }
 " TagBar {
-        if isdirectory(expand("$HOME/vimfiles/bundle/tagbar/"))
-            nnoremap <silent> <leader>tt :TagbarToggle<CR>
-        endif
-    "}
+if isdirectory(expand("$HOME/vimfiles/bundle/tagbar/"))
+    nnoremap <silent> <leader>tt :TagbarToggle<CR>
+endif
+"}
 " Fugitive {
-        if isdirectory(expand("$HOME/vimfiles/bundle/vim-fugitive/"))
-            nnoremap <silent> <leader>gs :Gstatus<CR>
-            nnoremap <silent> <leader>gd :Gdiff<CR>
-            nnoremap <silent> <leader>gc :Gcommit<CR>
-            nnoremap <silent> <leader>gb :Gblame<CR>
-            nnoremap <silent> <leader>gl :Glog<CR>
-            nnoremap <silent> <leader>gp :Git push<CR>
-            nnoremap <silent> <leader>gr :Gread<CR>
-            nnoremap <silent> <leader>gw :Gwrite<CR>
-            nnoremap <silent> <leader>ge :Gedit<CR>
-            " Mnemonic _i_nteractive
-            nnoremap <silent> <leader>gi :Git add -p %<CR>
-            nnoremap <silent> <leader>gg :SignifyToggle<CR>
-        endif
-    "}
+if isdirectory(expand("$HOME/vimfiles/bundle/vim-fugitive/"))
+    nnoremap <silent> <leader>gs :Gstatus<CR>
+    nnoremap <silent> <leader>gd :Gdiff<CR>
+    nnoremap <silent> <leader>gc :Gcommit<CR>
+    nnoremap <silent> <leader>gb :Gblame<CR>
+    nnoremap <silent> <leader>gl :Glog<CR>
+    nnoremap <silent> <leader>gp :Git push<CR>
+    nnoremap <silent> <leader>gr :Gread<CR>
+    nnoremap <silent> <leader>gw :Gwrite<CR>
+    nnoremap <silent> <leader>ge :Gedit<CR>
+    " Mnemonic _i_nteractive
+    nnoremap <silent> <leader>gi :Git add -p %<CR>
+    nnoremap <silent> <leader>gg :SignifyToggle<CR>
+endif
+"}
 " ctrlp {
-        if isdirectory(expand("$HOME/vimfiles/bundle/ctrlp.vim/"))
-            let g:ctrlp_working_path_mode = 'ra'
-            nnoremap <silent> <D-t> :CtrlP<CR>
-            nnoremap <silent> <D-r> :CtrlPMRU<CR>
-            let g:ctrlp_custom_ignore = {
+if isdirectory(expand("$HOME/vimfiles/bundle/ctrlp.vim/"))
+    let g:ctrlp_working_path_mode = 'ra'
+    nnoremap <silent> <D-t> :CtrlP<CR>
+    nnoremap <silent> <D-r> :CtrlPMRU<CR>
+    let g:ctrlp_custom_ignore = {
                 \ 'dir':  '\.git$\|\.hg$\|\.svn$',
                 \ 'file': '\.exe$\|\.so$\|\.dll$\|\.pyc$' }
 
-            if executable('ag')
-                let s:ctrlp_fallback = 'ag %s --nocolor -l -g ""'
-            elseif executable('ack-grep')
-                let s:ctrlp_fallback = 'ack-grep %s --nocolor -f'
-            elseif executable('ack')
-                let s:ctrlp_fallback = 'ack %s --nocolor -f'
-            " On Windows use "dir" as fallback command.
-            elseif WINDOWS()
-                let s:ctrlp_fallback = 'dir %s /-n /b /s /a-d'
-            else
-                let s:ctrlp_fallback = 'find %s -type f'
-            endif
-            if exists("g:ctrlp_user_command")
-                unlet g:ctrlp_user_command
-            endif
-            let g:ctrlp_user_command = {
+    if executable('ag')
+        let s:ctrlp_fallback = 'ag %s --nocolor -l -g ""'
+    elseif executable('ack-grep')
+        let s:ctrlp_fallback = 'ack-grep %s --nocolor -f'
+    elseif executable('ack')
+        let s:ctrlp_fallback = 'ack %s --nocolor -f'
+        " On Windows use "dir" as fallback command.
+    elseif WINDOWS()
+        let s:ctrlp_fallback = 'dir %s /-n /b /s /a-d'
+    else
+        let s:ctrlp_fallback = 'find %s -type f'
+    endif
+    if exists("g:ctrlp_user_command")
+        unlet g:ctrlp_user_command
+    endif
+    let g:ctrlp_user_command = {
                 \ 'types': {
-                    \ 1: ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others'],
-                    \ 2: ['.hg', 'hg --cwd %s locate -I .'],
+                \ 1: ['.git', 'cd %s && git ls-files . --cached --exclude-standard --others'],
+                \ 2: ['.hg', 'hg --cwd %s locate -I .'],
                 \ },
                 \ 'fallback': s:ctrlp_fallback
-            \ }
+                \ }
 
-            if isdirectory(expand("$HOME/vimfiles/bundle/ctrlp-funky/"))
-                " CtrlP extensions
-                let g:ctrlp_extensions = ['funky']
+    if isdirectory(expand("$HOME/vimfiles/bundle/ctrlp-funky/"))
+        " CtrlP extensions
+        let g:ctrlp_extensions = ['funky']
 
-                "funky
-                nnoremap <Leader>fu :CtrlPFunky<Cr>
-            endif
-        endif
-    "}
+        "funky
+        nnoremap <Leader>fu :CtrlPFunky<Cr>
+    endif
+endif
+"}
 " Airline
 "let g:airline#extensions#tabline#enabled = 1
 "let g:airline_powerline_fonts = 1
@@ -250,8 +245,8 @@ map <leader>p :YRShow<CR>
 let g:yankring_enabled=1
 let g:yankring_min_element_length=4
 " NeoComplCache{
-    let g:NeoComplCache_EnableAtStartup=1   
-    let g:NeoComplCache_DisableAutoComplete=1
+let g:NeoComplCache_EnableAtStartup=1   
+let g:NeoComplCache_DisableAutoComplete=1
 "}
 "修改vimrc之后立即生效
 autocmd BufWritePost vimrc so %
@@ -269,30 +264,30 @@ set completeopt=menu,longest
 set fileencodings=ucs-bom,utf-8,cp936,gbk
 "判断操作系统类型
 if (has("win32")||has("win64"))
-  let $VIMFILES = $HOME.'/vimfiles'
-  let $MYVIMRC = $VIMFILES.'/vimrc'
-  let g:iswindows=1
-  set fileencoding=gbk
-  try
-    "http://www.fontriver.com/f/bitstream_vera_sans_mono.zip
-    set guifont=Bitstream_Vera_Sans_Mono:h11:cANSI
-    "http://nchc.dl.sourceforge.net/project/yaheimono/yahei_mono.ttf
-    set gfw=Yahei_Mono:h11:cGB2312
-  catch
-    set guifont=Consolas:h11
-  endtry
-  "解决consle输出乱码   
-  language messages zh_CN.utf-8
-  set encoding=utf-8
-  set termencoding=gbk
+    let $VIMFILES = $HOME.'/vimfiles'
+    let $MYVIMRC = $VIMFILES.'/vimrc'
+    let g:iswindows=1
+    set fileencoding=gbk
+    try
+        "http://www.fontriver.com/f/bitstream_vera_sans_mono.zip
+        set guifont=Bitstream_Vera_Sans_Mono:h11:cANSI
+        "http://nchc.dl.sourceforge.net/project/yaheimono/yahei_mono.ttf
+        set gfw=Yahei_Mono:h11:cGB2312
+    catch
+        set guifont=Consolas:h11
+    endtry
+    "解决consle输出乱码   
+    language messages zh_CN.utf-8
+    set encoding=utf-8
+    set termencoding=gbk
 else  
-  let $VIMFILES = $HOME.'/.vim'
-  let $MYVIMRC = $VIMFILES.'/vimrc'
-  let g:iswindows=0
-  set encoding=utf-8
-  set fileencoding=utf-8   
-  set guifont=Consolas:h11
-  language messages zh_CN.utf-8
+    let $VIMFILES = $HOME.'/.vim'
+    let $MYVIMRC = $VIMFILES.'/vimrc'
+    let g:iswindows=0
+    set encoding=utf-8
+    set fileencoding=utf-8   
+    set guifont=Consolas:h11
+    language messages zh_CN.utf-8
 endif   
 "ALT上下左右移动光标
 imap <A-h> <LEFT>
@@ -315,12 +310,12 @@ set guioptions-=M
 set guioptions-=T
 set guioptions-=F
 map <silent> <F1> :if &guioptions =~# 'T' <Bar>
-         \set guioptions-=T <Bar>
-          \set guioptions-=m <bar>
-     \else <Bar>
-     \set guioptions+=T <Bar>
-     \set guioptions+=m <Bar>
-     \endif<CR>
+            \set guioptions-=T <Bar>
+            \set guioptions-=m <bar>
+            \else <Bar>
+            \set guioptions+=T <Bar>
+            \set guioptions+=m <Bar>
+            \endif<CR>
 " 启动的时候不显示那个援助索马里儿童的提示
 set shortmess=atI
 " 剪切板
@@ -377,25 +372,25 @@ set backspace=eol,start,indent
 :inoremap > <c-r>=ClosePair('>')<CR>
 :inoremap " ""<ESC>i
 " 打开文件时，总是跳到退出之前的光标处
- autocmd BufReadPost *
-			 \if line("'\"") > 0 && line("'\"") <= line("$") |
-			 \  exe "normal! g`\"" |
-			 \endif
+autocmd BufReadPost *
+            \if line("'\"") > 0 && line("'\"") <= line("$") |
+            \  exe "normal! g`\"" |
+            \endif
 if has("gui_running")
     set showtabline=1
     nmap tn :tabnew<CR>
-" 用浅色高亮当前编辑行
-   autocmd InsertLeave * se nocul
-   autocmd InsertEnter * se cul
-"解决菜单乱码   
+    " 用浅色高亮当前编辑行
+    autocmd InsertLeave * se nocul
+    autocmd InsertEnter * se cul
+    "解决菜单乱码   
     source $VIMRUNTIME/delmenu.vim   
     source $VIMRUNTIME/menu.vim   
 endif
 " 标签页只显示文件名
 function! ShortTabLabel ()
     let bufnrlist = tabpagebuflist (v:lnum)
-   let label = bufname (bufnrlist[tabpagewinnr (v:lnum) -1])
-     let filename = fnamemodify (label, ':t')
+    let label = bufname (bufnrlist[tabpagewinnr (v:lnum) -1])
+    let filename = fnamemodify (label, ':t')
     return filename
 endfunction
 "设置= + - * 前后自动空格
@@ -410,19 +405,19 @@ au FileType python inoremap <buffer>< <c-r>=EqualSign('<')<CR>
 au FileType python inoremap <buffer>, ,<space>
 
 func! EqualSign(char)
-if getline('.')[col('.') - 3] =~ "[\*-=+\/]"
-return "\<ESC>xa".a:char."\<SPACE>"
-else
-return "\<SPACE>".a:char."\<SPACE>\<ESC>a"
-endif
+    if getline('.')[col('.') - 3] =~ "[\*-=+\/]"
+        return "\<ESC>xa".a:char."\<SPACE>"
+    else
+        return "\<SPACE>".a:char."\<SPACE>\<ESC>a"
+    endif
 endfunc
 "实现括号的自动配对后防止重复输入），适用python
- function! ClosePair(char)
+function! ClosePair(char)
     if getline('.')[col('.') - 1] == a:char
         return "\<Right>"
     else
-      return a:char
-   endif
+        return a:char
+    endif
 endf
 "增强模式中的命令行自动完成操作
 set foldmethod=manual
@@ -487,7 +482,7 @@ set hlsearch
 set tags=./tags,./../tags,./**/tags
 "Alt组合键不映射到菜单上
 set winaltkeys=no
- 
+
 "禁止自动改变当前Vim窗口的大小
 let Tlist_Inc_Winwidth=0
 "把方法列表放在屏幕的右侧
@@ -501,113 +496,49 @@ let Tlist_Exit_OnlyWindow=1
 let g:winManagerWindowLayout='FileExplorer|TagList' "你要是喜欢这种布局可以注释掉这一行
 map <F4> :TlistToggle<cr>
 map <F3> :NERDTreeToggle<cr>
-map <F10> :call Do_CsTag()<CR>" 按F10建立tags索引
-nmap <C-@>s :cs find s <C-R>=expand("<cword>")<CR><CR>:copen<CR>
-nmap <C-@>g :cs find g <C-R>=expand("<cword>")<CR><CR>:copen<CR>
-nmap <C-@>c :cs find c <C-R>=expand("<cword>")<CR><CR>:copen<CR>
-nmap <C-@>t :cs find t <C-R>=expand("<cword>")<CR><CR>:copen<CR>
-nmap <C-@>e :cs find e <C-R>=expand("<cword>")<CR><CR>:copen<CR>
-nmap <C-@>f :cs find f <C-R>=expand("<cfile>")<CR><CR>:copen<CR>
-nmap <C-@>i :cs find i <C-R>=expand("<cfile>")<CR><CR>:copen<CR>
-nmap <C-@>d :cs find d <C-R>=expand("<cword>")<CR><CR>:copen<CR>
-function! Do_CsTag()
-    let dir = getcwd()
-    if filereadable("tags")
-        if(g:iswindows==1)
-            let tagsdeleted=delete(dir."\\"."tags")
-        else
-            let tagsdeleted=delete("./"."tags")
-        endif
-        if(tagsdeleted!=0)
-            echohl WarningMsg | echo "Fail to do tags! I cannot delete the tags" | echohl None
-            return
-        endif
-    endif
-    if has("cscope")
-        silent! execute "cs kill -1"
-    endif
-    if filereadable("cscope.files")
-        if(g:iswindows==1)
-            let csfilesdeleted=delete(dir."\\"."cscope.files")
-        else
-            let csfilesdeleted=delete("./"."cscope.files")
-        endif
-        if(csfilesdeleted!=0)
-            echohl WarningMsg | echo "Fail to do cscope! I cannot delete the cscope.files" | echohl None
-            return
-        endif
-    endif
-    if filereadable("cscope.out")
-        if(g:iswindows==1)
-            let csoutdeleted=delete(dir."\\"."cscope.out")
-        else
-            let csoutdeleted=delete("./"."cscope.out")
-        endif
-        if(csoutdeleted!=0)
-            echohl WarningMsg | echo "Fail to do cscope! I cannot delete the cscope.out" | echohl None
-            return
-        endif
-    endif
-    if(executable('ctags'))
-        silent! execute "!ctags -R --c-types=+p --fields=+S ."
-        silent! execute "!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q ."
-    endif
-    if(executable('cscope') && has("cscope") )
-        if(g:iswindows!=1)
-            silent! execute "!find . -name '*.h' -o -name '*.c' -o -name '*.cpp' -o -name '*.java' -o -name '*.cs' > cscope.files"
-        else
-            silent! execute "!dir /s/b *.c,*.cpp,*.h,*.java,*.cs >> cscope.files"
-        endif
-        silent! execute "!cscope -b"
-        execute "normal :"
-        if filereadable("cscope.out")
-            execute "cs add cscope.out"
-        endif
-    endif
-endfunction
 "定义源代码格式化
 map <F11> :call FormartSrc()<CR><CR>
 "定义FormartSrc()
 function! FormartSrc()
-exec "w"
-"C程序,Perl程序,Python程序
-if &filetype == 'c'
-exec "!astyle --style=gnu --suffix=none %"
-exec "e! %"
-elseif &filetype == 'cpp'
-exec "!astyle --style=gnu --suffix=none %"
-exec "e! %"
-elseif &filetype == 'perl'
-exec "!astyle --style=gnu --suffix=none %"
-exec "e! %"
-elseif &filetype == 'py'
-exec "!astyle --style=gnu --suffix=none %"
-exec "e! %"
-"Java程序
-elseif &filetype == 'java'
-exec "!astyle --style=java --suffix=none %"
-exec "e! %"
-elseif &filetype == 'jsp'
-exec "!astyle --style=gnu --suffix=none %"
-exec "e! %"
-elseif &filetype == 'xml'
-exec "!astyle --style=gnu --suffix=none %"
-exec "e! %"
-elseif &filetype == 'html'
-exec "!astyle --style=gnu --suffix=none %"
-exec "e! %"
-elseif &filetype == 'htm'
-exec "!astyle --style=gnu --suffix=none %"
-exec "e! %"
-endif
+    exec "w"
+    "C程序,Perl程序,Python程序
+    if &filetype == 'c'
+        exec "!astyle --style=gnu --suffix=none %"
+        exec "e! %"
+    elseif &filetype == 'cpp'
+        exec "!astyle --style=gnu --suffix=none %"
+        exec "e! %"
+    elseif &filetype == 'perl'
+        exec "!astyle --style=gnu --suffix=none %"
+        exec "e! %"
+    elseif &filetype == 'py'
+        exec "!astyle --style=gnu --suffix=none %"
+        exec "e! %"
+        "Java程序
+    elseif &filetype == 'java'
+        exec "!astyle --style=java --suffix=none %"
+        exec "e! %"
+    elseif &filetype == 'jsp'
+        exec "!astyle --style=gnu --suffix=none %"
+        exec "e! %"
+    elseif &filetype == 'xml'
+        exec "!astyle --style=gnu --suffix=none %"
+        exec "e! %"
+    elseif &filetype == 'html'
+        exec "!astyle --style=gnu --suffix=none %"
+        exec "e! %"
+    elseif &filetype == 'htm'
+        exec "!astyle --style=gnu --suffix=none %"
+        exec "e! %"
+    endif
 endfunction
 "结束定义FormartSrc
- 
+
 "设置tab的快捷键
 "Shift+t为新建一个标签，按两次Shirt+t为跳转标签
 map <S-t> :tabnew .<CR>
 map <S-t><S-t> <ESC>:tabnext<CR>
- 
+
 "设置建立新行但是不插入
 "map <S-o> o<ESC><CR>
 "设置快速注释键
@@ -641,83 +572,79 @@ map <leader>cd :cd %:p:h<cr>
 set autochdir
 "编译
 function! Compile()
-exec "w"
-"C程序   
-if &filetype == "c"
-exec "!gcc -Wl,-enable-auto-import % -g -o %<.exe"
-"c++程序
-elseif &filetype == "cpp"
-exec "!g++ -Wl,-enable-auto-import % -g -o %<.exe"
-"java程序
-elseif &filetype == 'java'
-exec "!javac %"
-"python程序
-elseif &filetype =='python'
-"exec "!python %"
-endif
+    exec "w"
+    "C程序   
+    if &filetype == "c"
+        exec "!gcc -Wl,-enable-auto-import % -g -o %<.exe"
+        "c++程序
+    elseif &filetype == "cpp"
+        exec "!g++ -Wl,-enable-auto-import % -g -o %<.exe"
+        "java程序
+    elseif &filetype == 'java'
+        exec "!javac %"
+        "python程序
+    elseif &filetype =='python'
+        "exec "!python %"
+    endif
 endfunction
 
 "定义Run函数
 function! Run()
-exec "w"
-"C程序
-if &filetype == 'c'
-exec "!%<.exe"
-endif
-if &filetype == 'cpp'
-exec "!%<.exe"
-endif
-if &filetype == 'java'
-exec "!java %<"
-endif
-if &filetype =='python'
-exec "!python %"
-endif
-if &filetype =='sh'
-exec "!bash %"
-endif
+    exec "w"
+    "C程序
+    if &filetype == 'c'
+        exec "!%<.exe"
+    endif
+    if &filetype == 'cpp'
+        exec "!%<.exe"
+    endif
+    if &filetype == 'java'
+        exec "!java %<"
+    endif
+    if &filetype =='python'
+        exec "!python %"
+    endif
+    if &filetype =='sh'
+        exec "!bash %"
+    endif
 endfunction
 "结束定义Run
 
 "定义Debug函数，用来调试小程序
 function! Debug()
-exec "w"
-"C程序
-if &filetype == 'c'
-exec "!rm %<"
-exec "!gcc % -g -o %<"
-exec "!gdb %<"
-elseif &filetype == 'cpp'
-exec "!rm %<"
-exec "!g++ % -g -o %<"
-exec "!gdb %<"
-"Java程序
-exec "!rm %<.class"
-elseif &filetype == 'java'
-exec "!javac %"
-exec "!jdb %<"
-endif
+    exec "w"
+    "C程序
+    if &filetype == 'c'
+        exec "!rm %<"
+        exec "!gcc % -g -o %<"
+        exec "!gdb %<"
+    elseif &filetype == 'cpp'
+        exec "!rm %<"
+        exec "!g++ % -g -o %<"
+        exec "!gdb %<"
+        "Java程序
+        exec "!rm %<.class"
+    elseif &filetype == 'java'
+        exec "!javac %"
+        exec "!jdb %<"
+    endif
 endfunction
 "定义dubug结束
- 
-"autocmd BufNewFile *.cc,*.sh,*.java exec ":call SetTitle()"
-"新建.cc,.java,.sh,
-"自动将shell脚本设置为可执行权限
-au BufWritePost * if getline(1) =~ "^#!" | if getline(1) =~ "/bin/" | silent !chmod a+x <afile> | endif | endif
+
 if has("autocmd")
-autocmd BufRead *.txt set tw=78
-autocmd BufReadPost *
-\ if line("'\"") > 0 && line ("'\"") <= line("$") |
-\   exe "normal g'\"" |
-\ endif
+    autocmd BufRead *.txt set tw=78
+    autocmd BufReadPost *
+                \ if line("'\"") > 0 && line ("'\"") <= line("$") |
+                \   exe "normal g'\"" |
+                \ endif
 endif
 " 使用上下来调节窗口大小
 nmap <silent> <UP> <C-W>+:let t:flwwinlayout = winrestcmd()<CR>
 nmap <silent> <DOWN> <C-W>-:let t:flwwinlayout = winrestcmd()<CR>
 " 命令模式下方便移动光标
 if (!has ("gui_win32"))
-  cmap <C-A> <Home>
-  cmap <C-E> <End>
+    cmap <C-A> <Home>
+    cmap <C-E> <End>
 endif
 " 打开一个临时的缓冲区随便记东西
 "nmap <Leader>s :Scratch<cr>
