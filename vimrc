@@ -84,8 +84,8 @@ Plugin 'colorizer'
 "Plugin 'pyflakes.vim'
 
 " Others
-Plugin 'tpope/vim-fugitive'
-Plugin 'matrix.vim'
+"Plugin 'tpope/vim-fugitive'
+"Plugin 'matrix.vim'
 call vundle#end()
 
 filetype plugin indent on     " required!
@@ -268,14 +268,14 @@ if (has("win32")||has("win64"))
     let $MYVIMRC = $VIMFILES.'/vimrc'
     let g:iswindows=1
     set fileencoding=gbk
-    try
+"    try
         "http://www.fontriver.com/f/bitstream_vera_sans_mono.zip
-        set guifont=Bitstream_Vera_Sans_Mono:h11:cANSI
+"        set guifont=Bitstream_Vera_Sans_Mono:h11:cANSI
         "http://nchc.dl.sourceforge.net/project/yaheimono/yahei_mono.ttf
-        set gfw=Yahei_Mono:h11:cGB2312
-    catch
-        set guifont=Consolas:h11
-    endtry
+"        set gfw=Yahei_Mono:h11:cGB2312
+"    catch
+"        set guifont=Consolas:h11
+"    endtry
     "½â¾öconsleÊä³öÂÒÂë   
     language messages zh_CN.utf-8
     set encoding=utf-8
