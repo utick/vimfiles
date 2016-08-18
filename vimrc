@@ -270,7 +270,7 @@ if (has("win32")||has("win64"))
     set fileencoding=gbk
 "    try
         "http://www.fontriver.com/f/bitstream_vera_sans_mono.zip
-"        set guifont=Bitstream_Vera_Sans_Mono:h11:cANSI
+        set guifont=Consolas:h11:cANSI,Bitstream_Vera_Sans_Mono:h11:cANSI
         "http://nchc.dl.sourceforge.net/project/yaheimono/yahei_mono.ttf
 "        set gfw=Yahei_Mono:h11:cGB2312
 "    catch
@@ -352,7 +352,7 @@ au BufEnter /usr/include/g++-3/* setf cpp
 " GNU标准
 "au BufEnter /usr/* call GnuIndent()
 " 窗口最大化
-"autocmd GUIEnter * simalt ~x
+autocmd GUIEnter * simalt ~x
 " 可以在buffer的任何地方使用鼠标（类似office中在工作区双击鼠标定位）
 set mouse=a
 set selection=exclusive
