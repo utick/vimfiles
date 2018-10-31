@@ -31,76 +31,84 @@ endif
 " }
 " }
 
+if has("persistent_undo")
+    set undodir=~/.undodir/
+    set undofile
+endif
+
+
 " use vim by default
 set nocompatible
-filetype off
 
-" vundle {{{
+""" vundle {{{
+""if WINDOWS()
+""    set rtp+=$HOME/vimfiles/bundle/Vundle.vim/
+""    call vundle#begin('$HOME/vimfiles/bundle/')
+""else
+""    set rtp+=~/.vim/bundle/Vundle.vim/
+""    call vundle#begin()
+""endif
+"""}}}
+
 if WINDOWS()
-    set rtp+=$HOME/vimfiles/bundle/Vundle.vim/
-    call vundle#begin('$HOME/vimfiles/bundle/')
+    call plug#begin('$HOME/vimfiles/bundle/')
 else
-    set rtp+=~/.vim/bundle/Vundle.vim/
-    call vundle#begin()
+    call plug#begin('~/.vim/bundle/')
 endif
-"}}}
 
 " let Vundle manage Vundle
 " required!
-Plugin 'VundleVim/Vundle.vim'
+Plug 'VundleVim/Vundle.vim'
 
 " Editing
-Plugin 'YankRing.vim'
-Plugin 'matchit.zip'
-Plugin 'repeat.vim'
-Plugin 'surround.vim'
-"Plugin 'vim-indent-object'
-"Plugin 'terryma/vim-multiple-cursors'
+""Plug 'vim-scripts/YankRing.vim'
+""Plug 'vim-scripts/matchit.zip'
+Plug 'vim-scripts/repeat.vim'
+"Plug 'vim-scripts/surround.vim'
+"Plug 'vim-scripts/vim-indent-object'
+"Plug 'terryma/vim-multiple-cursors'
+Plug 'luochen1990/rainbow'
 
 " File explore
-"Plugin 'The-NERD-Commenter'
-Plugin 'The-NERD-tree'
+Plug 'vim-scripts/The-NERD-Commenter'
+Plug 'vim-scripts/The-NERD-tree'
 " Both ctrlp and yankring use ctrl-p, the second one will work
-"Plugin 'kien/ctrlp.vim'
-"Plugin 'majutsushi/tagbar'
-Plugin 'bling/vim-airline'
+"Plug 'kien/ctrlp.vim'
+"Plug 'majutsushi/tagbar'
+Plug 'bling/vim-airline'
 
 " Auto complete
-"Plugin 'mattn/emmet-vim'
-Plugin 'ervandew/supertab'
-"Plugin 'Valloric/YouCompleteMe'
-"Plugin 'SirVer/ultisnips'
-"Plugin 'guoqiao/django-snippets'
+"Plug 'mattn/emmet-vim'
+Plug 'ervandew/supertab'
+"Plug 'Valloric/YouCompleteMe'
+"Plug 'SirVer/ultisnips'
+"Plug 'guoqiao/django-snippets'
 
 " Colorscheme
-Plugin 'molokai'
-"Plugin 'peaksea'
+"Plug 'vim-scripts/molokai'
+"Plug 'vim-scripts/peaksea'
+""Plug 'vim-scripts/torte.vim'
 
 " Syntax Highlight
-Plugin 'colorizer'
+""Plug 'vim-scripts/colorizer'
 
 " Programming
-"Plugin 'python.vim'
-"Plugin 'pyflakes.vim'
+"Plug 'vim-scripts/python.vim'
+"Plug 'vim-scripts/pyflakes.vim'
+""Plug 'elzr/vim-json'
 
 " Others
-"Plugin 'tpope/vim-fugitive'
-"Plugin 'matrix.vim'
-call vundle#end()
+"Plug 'tpope/vim-fugitive'
+"Plug 'vim-scripts/matrix.vim'
+Plug 'ntpeters/vim-better-whitespace'
+Plug 'git://github.com/tpope/vim-sensible.git'
+Plug 'git://github.com/mbbill/undotree.git'
+""Plug 'justinmk/vim-sneak'
+Plug 'easymotion/vim-easymotion'
+Plug 'haya14busa/incsearch-easymotion.vim'
+Plug 'haya14busa/incsearch.vim'
+call plug#end()
 
-filetype plugin indent on     " required!
-"
-" Brief help
-" :PluginList          - list configured bundles
-" :PluginInstall(!)    - install (update) bundles
-" :PluginSearch(!) foo - search (or refresh cache first) for foo
-" :PluginClean(!)      - confirm (or auto-approve) removal of unused bundles
-"
-" see :h vundle for more details or wiki for FAQ
-" NOTE: comments after Plugin commands are not allowed.
-
-syntax on
-syntax enable
 set ruler
 set number
 set hidden
@@ -115,7 +123,7 @@ set noswapfile
 
 " No annoying sound on errors
 set noerrorbells
-set visualbell
+set novisualbell
 set t_vb=
 set tm=500
 
@@ -123,7 +131,7 @@ set ignorecase
 set smartcase
 let loaded_matchparen = 1 " disable math parenthiese
 
-noremap ; :
+noremap! ; ;
 noremap 0 ^
 noremap <space> $
 noremap Y y$
@@ -149,7 +157,8 @@ map <leader>pp :setlocal paste!<cr>
 map <leader>ss :setlocal spell!<cr>
 
 try
-    colorscheme molokai
+    colorscheme torte
+    ""colorscheme molokai
 catch
     colorscheme desert
 endtry
@@ -165,11 +174,11 @@ if isdirectory(expand("$HOME/vimfiles/bundle/The-NERD-tree/"))
     let NERDTreeShowBookmarks=1
     let NERDTreeIgnore=['\.py[cd]$', '\~$', '\.swo$', '\.swp$', '^\.git$', '^\.hg$', '^\.svn$', '\.bzr$']
     let NERDTreeChDirMode=0
-    let NERDTreeQuitOnOpen=1
+    let NERDTreeQuitOnOpen=0
     let NERDTreeMouseMode=2
     let NERDTreeShowHidden=1
     let NERDTreeKeepTreeInNewTab=1
-    let g:nerdtree_tabs_open_on_gui_startup=0
+    let g:nerdtree_tabs_open_on_gui_startup=1
 endif
 " }
 " TagBar {
@@ -234,6 +243,9 @@ if isdirectory(expand("$HOME/vimfiles/bundle/ctrlp.vim/"))
     endif
 endif
 "}
+let g:rainbow_active = 1
+let g:better_whitespace_enabled=1
+""let g:sneak#label = 1
 " Airline
 "let g:airline#extensions#tabline#enabled = 1
 "let g:airline_powerline_fonts = 1
@@ -250,8 +262,6 @@ let g:NeoComplCache_DisableAutoComplete=1
 "}
 "修改vimrc之后立即生效
 autocmd BufWritePost vimrc so %
-"mapleader
-let mapleader=","
 "关闭swapfile"
 set noswapfile
 set cpt=.,w,b,u
@@ -280,6 +290,7 @@ if (has("win32")||has("win64"))
     language messages zh_CN.utf-8
     set encoding=utf-8
     set termencoding=gbk
+    set fileformat=dos
 else  
     let $VIMFILES = $HOME.'/.vim'
     let $MYVIMRC = $VIMFILES.'/vimrc'
@@ -289,6 +300,7 @@ else
     set guifont=Consolas:h11
     language messages zh_CN.utf-8
 endif   
+
 "ALT上下左右移动光标
 imap <A-h> <LEFT>
 imap <A-j> <DOWN>
@@ -323,6 +335,8 @@ set clipboard+=unnamed
 "map <c-v> "+p
 "设置全选快捷键
 map <C-a> ggVG
+"设置保存快捷键
+map <C-s> :w<CR>
 "复制
 vmap <C-c> "+y
 "粘贴
@@ -395,22 +409,22 @@ function! ShortTabLabel ()
 endfunction
 "设置= + - * 前后自动空格
 "设置,后面自动添加空格
-au FileType python inoremap <buffer>= <c-r>=EqualSign('=')<CR>
-au FileType python inoremap <buffer>+ <c-r>=EqualSign('+')<CR>
-au FileType python inoremap <buffer>- <c-r>=EqualSign('-')<CR>
-au FileType python inoremap <buffer>* <c-r>=EqualSign('*')<CR>
-au FileType python inoremap <buffer>/ <c-r>=EqualSign('/')<CR>
-au FileType python inoremap <buffer>> <c-r>=EqualSign('>')<CR>
-au FileType python inoremap <buffer>< <c-r>=EqualSign('<')<CR>
-au FileType python inoremap <buffer>, ,<space>
-
-func! EqualSign(char)
-    if getline('.')[col('.') - 3] =~ "[\*-=+\/]"
-        return "\<ESC>xa".a:char."\<SPACE>"
-    else
-        return "\<SPACE>".a:char."\<SPACE>\<ESC>a"
-    endif
-endfunc
+""au FileType python inoremap <buffer>= <c-r>=EqualSign('=')<CR>
+""au FileType python inoremap <buffer>+ <c-r>=EqualSign('+')<CR>
+""au FileType python inoremap <buffer>- <c-r>=EqualSign('-')<CR>
+""au FileType python inoremap <buffer>* <c-r>=EqualSign('*')<CR>
+""au FileType python inoremap <buffer>/ <c-r>=EqualSign('/')<CR>
+""au FileType python inoremap <buffer>> <c-r>=EqualSign('>')<CR>
+""au FileType python inoremap <buffer>< <c-r>=EqualSign('<')<CR>
+""au FileType python inoremap <buffer>, ,<space>
+""
+""func! EqualSign(char)
+""    if getline('.')[col('.') - 3] =~ "[\*-=+\/]"
+""        return "\<ESC>xa".a:char."\<SPACE>"
+""    else
+""        return "\<SPACE>".a:char."\<SPACE>\<ESC>a"
+""    endif
+""endfunc
 "实现括号的自动配对后防止重复输入），适用python
 function! ClosePair(char)
     if getline('.')[col('.') - 1] == a:char
@@ -456,6 +470,8 @@ set tabstop=4
 set smarttab
 set shiftwidth=4
 set showmatch
+"上下文行数
+set so=4
 " 高亮字符，让其不受100列限制
 ":highlight OverLength ctermbg=red ctermfg=white guibg=red guifg=white
 ":match OverLength '\%101v.*'
@@ -465,7 +481,7 @@ highlight StatusLine guifg=SlateBlue guibg=Yellow
 "highlight StatusLine guifg=Black guibg=White
 "highlight StatusLineNC guifg=Gray guibg=White
 " 我的状态行显示的内容（包括文件类型和解码）
-"set statusline=[%n]%<%f%y%h%m%r%=[%b\ 0x%B]\ Line\:%l\/%L\ Col\:%c%V\ %P
+set statusline=[%n]%<%f%y%h%m%r%=[%b\ 0x%B]\ Line\:%l\/%L\ Col\:%c%V\ %P
 " 匹配括号高亮的时间（单位是十分之一秒）
 set matchtime=3
 " 设置命令行高度为2行
@@ -559,6 +575,7 @@ map! <F12> <ESC>$a//
 "F8为编译和运行单个程序、两次F8为调试
 ""map <F5> :Do_make<CR>
 ""map <F5><F5> :make clean<CR>
+nnoremap <F5> :UndotreeToggle<cr>
 map <F6> :cw<CR>
 map <F6><F6> :ccl<CR>
 map <F7> :cn<CR>
@@ -660,3 +677,41 @@ let g:vim_markdown_folding_disabled=1
 ""Windows Registry Editor Version 5.00
 ""[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Keyboard Layout]
 """Scancode Map"=hex:00,00,00,00,00,00,00,00,02,00,00,00,1d,00,3a,00,00,00,00,00
+
+"""java类生成请求参数表格"""
+noremap <C-j> <ESC>:%!python -m json.tool<CR>
+function! Transfer()
+    exec "w"
+    exec "!curl --upload-file % https://transfer.sh/%"
+endfunction
+
+
+let g:EasyMotion_do_mapping = 0 " Disable default mappings
+
+" Jump to anywhere you want with minimal keystrokes, with just one key binding.
+" `s{char}{label}`
+nmap s <Plug>(easymotion-overwin-f)
+" or
+" `s{char}{char}{label}`
+" Need one more keystroke, but on average, it may be more comfortable.
+nmap s <Plug>(easymotion-overwin-f2)
+
+" Turn on case insensitive feature
+let g:EasyMotion_smartcase = 1
+
+" JK motions: Line motions
+map <Leader>l <Plug>(easymotion-lineforward)
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
+map <Leader>h <Plug>(easymotion-linebackward)
+" Move to word
+map  <Leader>w <Plug>(easymotion-bd-w)
+nmap <Leader>w <Plug>(easymotion-overwin-w)
+
+map z/ <Plug>(incsearch-easymotion-/)
+map z? <Plug>(incsearch-easymotion-?)
+map zg/ <Plug>(incsearch-easymotion-stay)
+
+if filereadable("_BROWSE")
+    autocmd VimEnter * NERDTree
+endif
